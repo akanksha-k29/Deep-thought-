@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Project Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    /* First Header (Navbar) */
+    .header {
+      background-color: #f8f8f8;
+      color: #000;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ccc;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header .header-logo {
+      display: flex;
+      align-items: center;
+      border-radius: 50%;
+    }
+
+    .header .header-logo img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%; /* Rounded shape */
+      margin-right: 10px;
+    }
+
+    .header .header-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .header .header-right-logos {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header .header-right-logos img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background-color: #ddd;
+    }
+
+    /* Second Header */
+    .second-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      margin-top: 60px; /* For navbar offset */
+      background-color:  #f8f8f8; /* Changed to blue */
+      color: blue;
+    }
+
+    .second-header h4 {
+      margin: 0;
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    .second-header button {
+      background-color: blue; /* Slightly lighter blue for button */
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    /* Sidebar (Left Panel) */
+    .container {
+      display: flex;
+      margin-top: 120px; /* Adjusted for fixed headers */
+      margin: 0%;
+      padding: 0%;
+      
+    }
+
+    .left-panel {
+      width: 40px; /* Collapsed by default */
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-right: 1px solid #ccc;
+      position: relative;
+      overflow: hidden; /* Hide content when collapsed */
+      transition: width 0.3s ease;
+    }
+
+    .left-panel.expanded {
+      width: 250px; /* Expanded width */
+    }
+
+    .toggle-button {
+      position: absolute;
+      top: 10px;
+      right: -15px;
+      background-color: blue;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-button:before {
+      content: "→";
+    }
+
+    .left-panel.expanded .toggle-button:before {
+      content: "←";
+    }
+
+    .left-panel-content {
+      display: none; /* Hidden by default */
+    }
+
+    .left-panel.expanded .left-panel-content {
+      display: block; /* Show content when expanded */
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px 30px; /* Improved padding */
+      display: grid;
+      grid-template-columns: 1fr;
+      /* gap: 20 px; */
+    }
+
+    .card {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px; /* Improved padding */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      font-size: 18px;
+      color: #002366;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 14px;
+      margin: 0 0 10px;
+    }
+
+    .card .video-container {
+      margin-bottom: 10px;
+    }
+
+    .card iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* Sticky Vertical Icons */
+    .sticky-icons {
+      position: fixed;
+      bottom: 5%;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px; /* Closer to each other */
+    }
+
+    .sticky-icons .icon {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- First Header (Navbar) -->
+  <div class="header">
+    <div class="header-logo">
+      <img src="./images/deep thougth.jpeg" alt="Logo"> <!-- Replace with actual logo -->
+      <div class="header-title">DEEP <span style="color: blue">THOUGHT</span></div>
+    </div>
+    <div class="header-right-logos">
+      <img src="./images/deep thougth.jpeg" alt="Icon 1"> <!-- Replace with actual icon -->
+      <img src="./images/deep thougth.jpeg" alt="Icon 2">
+      <img src="./images/deep thougth.jpeg" alt="Icon 3">
+      <img src="./images/deep thougth.jpeg" alt="Icon 4">
+    </div>
+  </div>
+
+  <!-- Second Header -->
+  <div class="second-header">
+    <h4>Technical Project Management</h4>
+    <button>Button</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="left-panel collapsed" id="leftPanel"> <!-- Initially collapsed -->
+      <button style="background-color: black;" class="toggle-button" onclick="togglePanel()"></button>
+      <div class="left-panel-content">
+        <div style="height: 20px; width: 100%; background-color: black; color: white; border: 4px solid black;">
+          Journey Board
+          </div>
+        <h3><span style="font-style: bold;">Explore the world of Management</span> </h3>
+        <ul >
+          <li>Technical Project Management</li>
+          <li>Threadbuild</li>
+          <li>Structure your Pointers</li>
+          <li>4SA Method</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="card">
+        <h2>Technical Project Management</h2>
+        <p>Explore the world of management</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/eTzJT5VDXvA" title="Video" allowfullscreen
+            ></iframe>
+
+          <!-- <iframe src="https://youtube.com/@sciensationmedia?si=niIrmqmMPsffKvmz" title="Video"></iframe> -->
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Threadbuild</h2>
+        <p>Watch this video and build a thread.</p>
+        <div class="question-section">
+          <div class="question">
+            <textarea placeholder="Your thread"></textarea>
+            <button>Save</button>
+          </div>
+          <div class="question">
+            <textarea placeholder="Your key points"></textarea>
+            <button>Save</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Structure Your Pointers</h2>
+        <p>Organize your ideas into structured points.</p>
+      </div>
+
+      <div class="card">
+        <h2>4SA Method</h2>
+        <p>How to bring an idea into practice.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Vertical Icons -->
+  <div class="sticky-icons">
+    <div class="icon">1</div>
+    <div class="icon">2</div>
+    <div class="icon">3</div>
+  </div>
+
+  <div class="footer">Deep Thought © 2025</div>
+
+  <script>
+    function togglePanel() {
+      const panel = document.getElementById("leftPanel");
+      panel.classList.toggle("collapsed");
+      panel.classList.toggle("expanded");
+    }
+  </script>
+</body>
+</html>
